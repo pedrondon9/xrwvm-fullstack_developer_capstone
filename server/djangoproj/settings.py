@@ -27,8 +27,12 @@ SECRET_KEY =\
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+CORS_ALLOW_ALL_ORIGINS = True
 
-ALLOWED_HOSTS = ['localhost','https://stropro31-8000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai']
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
+ALLOWED_HOSTS = ['localhost','stropro31-8000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai', '127.0.0.1']
 CSRF_TRUSTED_ORIGINS = ['https://stropro31-8000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai']
 
 REST_FRAMEWORK = {
@@ -45,9 +49,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "corsheaders",
+
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

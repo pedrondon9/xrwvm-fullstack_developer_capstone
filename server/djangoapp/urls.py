@@ -18,6 +18,10 @@ urlpatterns = [
     path(route='dealer/<int:dealer_id>', view=views.get_dealer_details, name='dealer_details'),
     path(route='reviews/dealer/<int:dealer_id>', view=views.get_dealer_reviews, name='dealer_details'),
     path(route='add_review', view=views.add_review, name='add_review'),
+    
+    #path('get_dealers/', views.proxy_to_express),  # Ruta que React consumirá TEST
+
+
     # path for dealer reviews view
 
     # path for add a review view
