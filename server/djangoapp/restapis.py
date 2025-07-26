@@ -2,7 +2,6 @@
 import requests
 import os
 from dotenv import load_dotenv
-from django.http import JsonResponse
 from urllib.parse import urlencode
 
 load_dotenv()
