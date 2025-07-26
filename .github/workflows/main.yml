@@ -45,3 +45,7 @@ jobs:
           # This command finds all JavaScript files recursively and runs JSHint on them
           find ./server/database -type f -name "*.js" ! -path "*/node_modules/*" -exec jshint {} +
           echo "Linted all the js files successfully"
+      - name: Format JS files with Prettier
+        run: |
+          npm install --global prettier
+          prettier --check "./server/database/**/*.js"
