@@ -29,7 +29,6 @@ urlpatterns = [
         name="dealer_details",
     ),
     path(route="add_review", view=views.add_review, name="add_review"),
-    # path('get_dealers/', views.proxy_to_express),  # Ruta que React consumirá TEST
     # path for dealer reviews view
     # path for add a review view
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

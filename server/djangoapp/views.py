@@ -106,7 +106,8 @@ def get_cars(request):
 # # Update the `get_dealerships` view to render the index page with
 # a list of dealerships
 # def get_dealerships(request):
-# Update the `get_dealerships` render list of dealerships all by default, particular state if state is passed
+# Update the `get_dealerships` render list of dealerships
+# all by default, particular state if state is passed
 def get_dealerships(request, state="All"):
     if state == "All":
         endpoint = "/fetchDealers"
@@ -119,7 +120,8 @@ def get_dealerships(request, state="All"):
 # ...
 
 
-# Create a `get_dealer_reviews` view to render the reviews of a dealer
+# Create a `get_dealer_reviews` view to render the
+# reviews of a dealer
 # def get_dealer_reviews(request,dealer_id):
 def get_dealer_reviews(request, dealer_id):
     # if dealer id has been provided
@@ -127,7 +129,8 @@ def get_dealer_reviews(request, dealer_id):
         endpoint = "/fetchReviews/dealer/" + str(dealer_id)
         reviews = get_request(endpoint)
 
-        # i woking in the local environment, so I will not be able to call the sentiment analyzer service
+        # i woking in the local environment, so I will not
+        # be able to call the sentiment analyzer service
         # for review_detail in reviews:
         # response = analyze_review_sentiments(review_detail['review'])
         # print(response)
@@ -157,10 +160,11 @@ def get_dealer_details(request, dealer_id):
 # Create a `add_review` view to submit a review
 # def add_review(request):
 def add_review(request):
-    if request.user.is_anonymous == False:
+    if not request.user.is_anonymous:
         try:
             return JsonResponse({"status": 200})
-        except:
+        except requests.exceptions.RequestException as e:
+            print(e)
             return JsonResponse(
                 {"status": 401, "message": "Error in posting review"}
             )
